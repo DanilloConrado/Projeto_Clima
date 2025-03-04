@@ -42,7 +42,8 @@ const showWeatherData = async (city) => {
     weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
     countryElement.setAttribute("src", `https://flagcdn.com/w320/${data.sys.country.toLowerCase()}.png`);
     humidityElement.innerText = `${data.main.humidity}%`;
-    windElement.innerText = `${data.wind.speed}km/h`;
+    const windSpeed = data.wind.speed ? (data.wind.speed * 3.6).toFixed(1) : 'N/A'; // Converte de m/s para km/h e formata para 1 casa decimal
+    windElement.innerText = `${windSpeed} km/h`;
 
     // Remover a classe 'hide' para exibir os dados do clima
     weatherContainer.classList.remove("hide");
