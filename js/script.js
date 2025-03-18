@@ -1,4 +1,4 @@
-// Variaveis e selecao de elementos
+
 const apikey = "5a78cc39037a9dcd418d8480e57a2536";
 const apiCountryUrl = "https://flagcdn.com/w320/";
 
@@ -15,7 +15,7 @@ const windElement = document.querySelector("#wind span");
 
 const weatherContainer = document.querySelector("#weather-data");
 
-// Funcoes
+
 const getWeatherData = async (city) => {
     const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}&lang=pt_br`;
 
@@ -45,11 +45,11 @@ const showWeatherData = async (city) => {
     const windSpeed = data.wind.speed ? (data.wind.speed * 3.6).toFixed(1) : 'N/A'; // Converte de m/s para km/h e formata para 1 casa decimal
     windElement.innerText = `${windSpeed} km/h`;
 
-    // Remover a classe 'hide' para exibir os dados do clima
+
     weatherContainer.classList.remove("hide");
 };
 
-// Eventos
+
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const city = cityInput.value;

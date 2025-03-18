@@ -1,4 +1,3 @@
-/* Geral */
 * {
     padding: 0;
     margin: 0;
@@ -13,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
 }
+
 .hide {
     display: none;
 }
@@ -26,7 +26,7 @@ body {
 
 }
 
-/* Form */
+
 .form h3 {
     margin-bottom: 1rem;
 }
@@ -55,7 +55,7 @@ body {
 }
 
 
-/* Clima */
+
 #weather-data {
     border-top: 1px solid #fff;
     margin-top: 1.5rem;
@@ -86,7 +86,7 @@ body {
 
 #description-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     margin: 0.6rem 0;
 }
