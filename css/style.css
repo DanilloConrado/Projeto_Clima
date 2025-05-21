@@ -1,34 +1,55 @@
+/* Reset universal e variáveis CSS */
+:root {
+    --primary-color: #146f9c;
+    --secondary-color: #a99ea0;
+    --text-color: #fdfdfd;
+    --border-radius: 1rem;
+    --padding-standard: 0.8rem;
+    --margin-standard: 0.6rem;
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --transition-speed: 0.3s;
+}
+
 * {
     padding: 0;
     margin: 0;
-    font-family: "Ubuntu", "sans-serif";
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
 }
 
+/* Estilos responsivos para o corpo */
 body {
     background: url('https://media.wired.com/photos/65e83b818d5140963a083095/master/w_1600,c_limit/weather.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 1rem;
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
+/* Container principal com gradiente e efeito de vidro */
 .container {
     background-color: rgba(20, 111, 156, 0.95);
-    box-shadow: rgba(0, 0, 0, .24) 0px 3px 8px;
+    background: linear-gradient(135deg, rgba(20, 111, 156, 0.95), rgba(20, 111, 156, 0.85));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow);
     padding: 2rem;
-    color: #fdfdfd;
-    border-radius: 1rem;
-
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 400px;
 }
 
-
+/* Estilos do formulário */
 .form h3 {
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .form-input-container {
@@ -36,28 +57,34 @@ body {
 }
 
 .form input {
-    padding: 0.8rem;
+    padding: var(--padding-standard);
     border: none;
     flex: 1;
     border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
 }
 
 .form button {
-    padding: 0.8rem;
+    padding: var(--padding-standard);
     min-width: 50px;
     margin-left: 8px;
-    background-color: #a99ea0;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
+    transition: background-color var(--transition-speed);
 }
 
+.form button:hover {
+    background-color: #8a8183;
+    transform: scale(1.05);
+}
 
-
+/* Dados meteorológicos */
 #weather-data {
-    border-top: 1px solid #fff;
+    border-top: 1px solid var(--text-color);
     margin-top: 1.5rem;
     padding-top: 1.5rem;
     text-align: center;
@@ -67,15 +94,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.6rem;
+    margin-bottom: var(--margin-standard);
+    font-size: 1.8rem;
 }
 
 #weather-data h2 i {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 #weather-data span {
-    margin-left: 0.6rem;
+    margin-left: var(--margin-standard);
 }
 
 #country {
@@ -88,24 +116,71 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.6rem 0;
+    margin: var(--margin-standard) 0;
 }
-
 
 #description {
     font-weight: bold;
     text-transform: capitalize;
 }
 
-
 #details-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #details-container #humidity {
-    border-right: 1px solid #fff;
-    margin: 0.6rem;
-    padding: 0.6rem;
+    border-right: 1px solid var(--text-color);
+    margin: var(--margin-standard);
+    padding: var(--margin-standard);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .form-input-container {
+        flex-direction: column;
+    }
+    
+    .form button {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    
+    #details-container {
+        flex-direction: column;
+    }
+    
+    #details-container #humidity {
+        border-right: none;
+        border-bottom: 1px solid var(--text-color);
+    }
+}
+
+/* Animações e transições */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Acessibilidade */
+.form button:focus, 
+.form input:focus {
+    outline: 2px solid #fff;
 }
